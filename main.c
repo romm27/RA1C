@@ -11,7 +11,7 @@ int main() {
     FILE *fileWrite;
 
     char line[MAX_LENGTH];
-    char *rawInput[MAX];
+    //char *rawInput[MAX];
     int integerQuantity = 0;
 
     fileRead = fopen("input.txt", "r");
@@ -26,36 +26,34 @@ int main() {
         integerQuantity = atoi(line);
     }
 
+    char numbers[MAX_LENGTH];
+
     if (fgets(line, sizeof(line), fileRead) != NULL) {
-        printf("\n %s", line);
+        numbers = line;
     }
 
-}
 
 
 
+    printf("\n %s", numbers);
 
+    // char str[] = "1 -2 3 4 -20 4";
+    // int numeros[10];
+    // int indice = 0;
 
+    // char *token = strtok(numbers, " ");
 
-
-
-    // while (fgets(line, sizeof(line), fileRead) != NULL) {
-
-    //     // if (line[strlen(line) - 1] == '\n') {
-    //     //     line[strlen(line) - 1] = '\0';
-    //     // }
-        
-    //     rawInput[count] = malloc(strlen(line) + 1);
-    //     strcpy(rawInput[count], line);
-    //     fprintf(fileWrite, line);
-    //     count++;
-
-    //     if (count >= MAX) {
-    //         printf("Limite máximo de linhas atingido.\n");
-    //         break;
-    //     }
+    // while (token != NULL) {
+    //     int num = atoi(token);
+    //     numeros[indice] = num;
+    //     indice++;
+    //     token = strtok(NULL, " ");
     // }
 
+    // int i;
+    // for (i = 0; i < indice; i++) {
+    //     printf("Elemento %d: %d\n", i, numeros[i]);
+    // }
     fclose(fileRead);
     fclose(fileWrite);
 
