@@ -2,36 +2,39 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define VECTORMAXSIZE 1000
+#define MAX_LINES 1000
+#define MAX_LENGTH 100
 
-FILE *fileread;
-FILE *filewrite;
+int main() {
+    FILE *fileRead;
+    FILE *fileWrite;
 
-int main(){
+    char line[MAX_LENGTH];
+    char *lines[MAX_LINES];
+    int count = 0;
 
-    fileread = fopen("rawInput.txt", "r");
-    filewrite = fopen("output.txt", "w"); 
+    fileRead = fopen("input.txt", "r");
+    fileWrite = fopen("output.txt", "w");
 
-    char rawInput[VECTORMAXSIZE];
+    while (fgets(line, sizeof(line), fileRead) != NULL) {
 
-    int lineCount  = 0;
-    while(!feof(fileread)){
-        fgets(rawInput, VECTORMAXSIZE, fileread);
-        fprintf(filewrite, rawInput);
-        printf("%s", rawInput);
-        lineCount++;
+        if (line[strlen(line) - 1] == '\n') {
+            line[strlen(line) - 1] = '\0';
+        }
+
+        lines[count] = malloc(strlen(line) + 1);
+        strcpy(lines[count], line);
+        fprintf(fileWrite, line);
+        count++;
+
+        if (count >= MAX_LINES) {
+            printf("Limite máximo de linhas atingido.\n");
+            break;
+        }
     }
 
-    int input[lineCount];
-
-    for(int i = 0; i < lineCount; i++){
-        char temp[sizeof(rawInput[i])] = rawInput[i];
-        input[i] = atoi(temp);
-        printf("%d\n", input[i]);
-    }
-
-    //printf("%d", sizeof(rawInput));
-    printf("%d", lineCount);
+    fclose(fileRead);
+    fclose(fileWrite);
 
     return 0;
 }
