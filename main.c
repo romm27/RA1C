@@ -2,18 +2,23 @@
 
 #define VECTORSIZE 1000
 
-FILE *file;
+FILE *fileread;
+FILE *filewrite;
 
 int main(){
-    file = fopen("input.txt", "r");
+
+    fileread = fopen("input.txt", "r");
+    filewrite = fopen("output.txt", "w"); 
 
     char input[VECTORSIZE];
 
-    while(!feof(file)){
-        fgets(input, VECTORSIZE, file);
+    while(!feof(fileread)){
+        fgets(input, VECTORSIZE, fileread);
+        fprintf(filewrite, input);
+        printf("%s", input);
     }
 
-    printf("%s", input);
+    printf("%d", sizeof(input));
 
     return 0;
 }
