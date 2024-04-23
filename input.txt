@@ -1,6 +1,2 @@
-Ola
-tudo
-bem
-com
-vc?
-Siiiim
+10
+20 13 14 26
