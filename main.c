@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 #define MAX 1000
 
@@ -44,10 +45,44 @@ int main() {
             token = strtok(NULL, " ");
         }
 
-        if (index > MAX) {
-            //programa deve ser interrompido e nenhum resultado deve ser produzido
-            return 1;
+        int count = 0;
+        int zeros = 0;
+        int positives = 0;
+        int negatives = 0;
+        int evens = 0;
+        int odds = 0;
+
+        while (count < index) {
+            if (numbers[count] == 0) {
+                zeros += 1;
+            } 
+            
+            if (numbers[count] < 0) {
+                negatives += 1;
+            }
+            
+            if (numbers[count] > 0) {
+                positives += 1;
+            }
+
+            if (numbers[count] % 2 == 0) {
+                evens += 1;
+            }
+
+            if (numbers[count] % 2 != 0) {
+                odds += 1;
+            }
+
+            count++;
         }
+
+        printf("%d %d %d %d %d \n", positives, negatives, zeros, evens, odds);
+
+        // if (index > MAX) {
+        //     //programa deve ser interrompido e nenhum resultado deve ser produzido
+        //     return 1;
+        // }
+
         int i;
         for (i = 0; i < index; i++) {
             fprintf(fileWrite, "%d ", numbers[i]);
