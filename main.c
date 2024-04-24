@@ -14,7 +14,6 @@ int main() {
     int i = 0;
 
     fileRead = fopen("dados.txt", "r");
-    fileWrite = fopen("output.txt", "w");
 
     FILE *statistics = fopen("estatisticas.txt", "w");
     FILE *unique = fopen("distintos.txt", "w");
@@ -76,11 +75,11 @@ int main() {
             count++;
         }
 
-        fprintf(statistics, "%s %d\n", "Quantidade de numeros positivos: ", positives);
-        fprintf(statistics, "%s %d\n", "Quantidade de numeros negativos: ", negatives);
-        fprintf(statistics, "%s %d\n", "Quantidade de numeros zero: ", zeros);
-        fprintf(statistics, "%s %d\n", "Quantidade de numeros pares: ", evens);
-        fprintf(statistics, "%s %d\n", "Quantidade de numeros ímpares: ", odds);
+        fprintf(statistics, "%s %d\n", "Quantidade de números positivos: ", positives);
+        fprintf(statistics, "%s %d\n", "Quantidade de números negativos: ", negatives);
+        fprintf(statistics, "%s %d\n", "Quantidade de números zero: ", zeros);
+        fprintf(statistics, "%s %d\n", "Quantidade de números pares: ", evens);
+        fprintf(statistics, "%s %d\n", "Quantidade de números ímpares: ", odds);
 
         // if (index > MAX) {
         //     //programa deve ser interrompido e nenhum resultado deve ser produzido
@@ -89,7 +88,10 @@ int main() {
     }
 
     fclose(fileRead);
-    fclose(fileWrite);
+    fclose(statistics);
+    fclose(unique);
+    fclose(sorted);
+    fclose(uniqueSorted);
 
     return 0;
 }
