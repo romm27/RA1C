@@ -26,12 +26,11 @@ int main() {
         integerQuantity = atoi(line);
     }
 
-    //Lê a segunda linha (falta converter str para line) e a escreve no output.txt
+    //Lê a segunda linha e a escreve no output.txt
     if (fgets(line, sizeof(line), fileRead) != NULL) {
-        char str[] = "5 -2 3 4 -34"; // Falta converter a line para ser a str
         int index = 0;
         int numbers[sizeof(line)]; // O último caractere \0 está sendo contado
-        char *token = strtok(str, " ");
+        char *token = strtok(line, " ");
 
         while (token != NULL) {
             int num = atoi(token);
@@ -42,7 +41,7 @@ int main() {
 
         if (index > MAX) {
             //programa deve ser interrompido e nenhum resultado deve ser produzido
-            return 0;
+            return 1;
         }
         int i;
         for (i = 0; i < index; i++) {
