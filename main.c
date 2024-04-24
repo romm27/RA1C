@@ -27,33 +27,34 @@ int main() {
         integerQuantity = atoi(line);
     }
 
-    char numbers[MAX_LENGTH];
+    //char numbers[MAX_LENGTH];
 
     //Lê a segunda linha e a escreve no output.txt
     if (fgets(line, sizeof(line), fileRead) != NULL) {
-        char str[] = "1 -2 3 4 -20 4";
+        char str[] = "5 -2 3 4 -20 4"; // Falta converter a line
         int numbers[10];
         int index = 0;
 
         char *token = strtok(str, " ");
+        printf("%s \n", token);
 
         while (token != NULL) {
             int num = atoi(token);
             numbers[index] = num;
+            fprintf(fileWrite, "%d ", num);
             index++;
             token = strtok(NULL, " ");
-            //fprintf(fileWrite, line[i]);
+            
         }
 
+        //Esta parte é apenas um teste
         int i;
         for (i = 0; i < index; i++) {
             printf("Elemento %d: %d\n", i, numbers[i]);
-             //fprintf(fileWrite, line[i]);
         }
 
     }
 
-   
     fclose(fileRead);
     fclose(fileWrite);
 
