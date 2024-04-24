@@ -11,8 +11,8 @@ int main() {
     FILE *fileWrite;
 
     char line[MAX_LENGTH];
-    //char *rawInput[MAX];
     int integerQuantity = 0;
+    int i = 0;
 
     fileRead = fopen("input.txt", "r");
     fileWrite = fopen("output.txt", "w");
@@ -22,38 +22,38 @@ int main() {
         return 1;
     }
 
+    //Lê a primeira linha
     if (fgets(line, sizeof(line), fileRead) != NULL) {
         integerQuantity = atoi(line);
     }
 
     char numbers[MAX_LENGTH];
 
+    //Lê a segunda linha e a escreve no output.txt
     if (fgets(line, sizeof(line), fileRead) != NULL) {
-        numbers = line;
+        char str[] = "1 -2 3 4 -20 4";
+        int numbers[10];
+        int index = 0;
+
+        char *token = strtok(str, " ");
+
+        while (token != NULL) {
+            int num = atoi(token);
+            numbers[index] = num;
+            index++;
+            token = strtok(NULL, " ");
+            //fprintf(fileWrite, line[i]);
+        }
+
+        int i;
+        for (i = 0; i < index; i++) {
+            printf("Elemento %d: %d\n", i, numbers[i]);
+             //fprintf(fileWrite, line[i]);
+        }
+
     }
 
-
-
-
-    printf("\n %s", numbers);
-
-    // char str[] = "1 -2 3 4 -20 4";
-    // int numeros[10];
-    // int indice = 0;
-
-    // char *token = strtok(numbers, " ");
-
-    // while (token != NULL) {
-    //     int num = atoi(token);
-    //     numeros[indice] = num;
-    //     indice++;
-    //     token = strtok(NULL, " ");
-    // }
-
-    // int i;
-    // for (i = 0; i < indice; i++) {
-    //     printf("Elemento %d: %d\n", i, numeros[i]);
-    // }
+   
     fclose(fileRead);
     fclose(fileWrite);
 
