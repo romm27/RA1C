@@ -13,8 +13,13 @@ int main() {
     int integerQuantity = 0;
     int i = 0;
 
-    fileRead = fopen("input.txt", "r");
+    fileRead = fopen("dados.txt", "r");
     fileWrite = fopen("output.txt", "w");
+
+    FILE *statistics = fopen("estatisticas.txt", "w");
+    FILE *unique = fopen("distintos.txt", "w");
+    FILE *sequence = fopen("ordernado.txt", "w");
+    FILE *uniqueSequence = fopen("distintos_ordernado.txt","w");
 
     if (fileRead == NULL) {
         printf("Erro ao abrir o arquivo.\n");
