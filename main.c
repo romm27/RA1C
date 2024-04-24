@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
 
 #define MAX 1000
 
@@ -19,8 +18,8 @@ int main() {
 
     FILE *statistics = fopen("estatisticas.txt", "w");
     FILE *unique = fopen("distintos.txt", "w");
-    FILE *sequence = fopen("ordernado.txt", "w");
-    FILE *uniqueSequence = fopen("distintos_ordernado.txt","w");
+    FILE *sorted = fopen("ordernado.txt", "w");
+    FILE *uniqueSorted = fopen("distintos_ordernado.txt","w");
 
     if (fileRead == NULL) {
         printf("Erro ao abrir o arquivo.\n");
