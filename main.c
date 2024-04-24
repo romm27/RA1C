@@ -6,22 +6,38 @@
 
 int main() {
 
-    FILE *fileRead;
-    FILE *fileWrite;
-
     char line[MAX];
     int integerQuantity = 0;
     int i = 0;
 
-    fileRead = fopen("dados.txt", "r");
-
+    FILE *fileRead = fopen("dados.txt", "r");
     FILE *statistics = fopen("estatisticas.txt", "w");
     FILE *unique = fopen("distintos.txt", "w");
     FILE *sorted = fopen("ordernado.txt", "w");
     FILE *uniqueSorted = fopen("distintos_ordernado.txt","w");
 
     if (fileRead == NULL) {
-        printf("Erro ao abrir o arquivo.\n");
+        printf("Erro ao abrir o arquivo dados.txt\n");
+        return 1;
+    }
+
+    if (statistics == NULL) {
+        printf("Erro ao abrir o arquivo estatísticas.txt\n");
+        return 1;
+    }
+
+    if (unique == NULL) {
+        printf("Erro ao abrir o arquivo distintos.txt\n");
+        return 1;
+    }
+
+    if (sorted == NULL) {
+        printf("Erro ao abrir o arquivo ordenado.txt\n");
+        return 1;
+    }
+
+    if (uniqueSorted == NULL) {
+        printf("Erro ao abrir o arquivo distintos_ordenado.txt\n");
         return 1;
     }
 

@@ -1,5 +1,5 @@
-Quantidade de numeros positivos:  3
-Quantidade de numeros negativos:  0
-Quantidade de numeros zero:  0
-Quantidade de numeros pares:  3
-Quantidade de numeros ímpares:  0
+Quantidade de números positivos:  5
+Quantidade de números negativos:  0
+Quantidade de números zero:  0
+Quantidade de números pares:  4
+Quantidade de números ímpares:  1
