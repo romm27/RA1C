@@ -31,10 +31,10 @@ int main() {
         integerQuantity = atoi(line);
     }
 
-    //Lê a segunda linha e a escreve no output.txt
+    //Lê a segunda linha
     if (fgets(line, sizeof(line), fileRead) != NULL) {
         int index = 0;
-        int numbers[sizeof(line)]; // O último caractere \0 está sendo contado
+        int numbers[sizeof(line)];
         char *token = strtok(line, " ");
 
         while (token != NULL) {
@@ -44,6 +44,7 @@ int main() {
             token = strtok(NULL, " ");
         }
 
+        // Faz verificações necessárias e escreve no arquivo estatisticas.txt
         int count = 0;
         int zeros = 0;
         int positives = 0;
@@ -75,23 +76,15 @@ int main() {
             count++;
         }
 
-        printf("%d %d %d %d %d \n", positives, negatives, zeros, evens, odds);
+        fprintf(statistics, "%s %d\n", "Quantidade de numeros positivos: ", positives);
+        fprintf(statistics, "%s %d\n", "Quantidade de numeros negativos: ", negatives);
+        fprintf(statistics, "%s %d\n", "Quantidade de numeros zero: ", zeros);
+        fprintf(statistics, "%s %d\n", "Quantidade de numeros pares: ", evens);
+        fprintf(statistics, "%s %d\n", "Quantidade de numeros ímpares: ", odds);
 
         // if (index > MAX) {
         //     //programa deve ser interrompido e nenhum resultado deve ser produzido
         //     return 1;
-        // }
-
-        int i;
-        for (i = 0; i < index; i++) {
-            fprintf(fileWrite, "%d ", numbers[i]);
-        }
-
-        //Esta parte é apenas um teste
-        int j;
-        for (j = 0; j < index; j++) {
-            printf("Elemento %d: %d\n", j, numbers[j]);
-        }
 
     }
 
