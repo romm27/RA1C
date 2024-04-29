@@ -112,16 +112,13 @@ int main() {
         int sortedDistV[index];
         sortedDistV[0] = sortedV[0];
         int lastN = sortedV[0];
-        int indexDist = 0;
+        int indexDist = 1;
         for(int i = 1; i < index; i++){
-            bool unique = true;
-            while(sortedV[i] == lastN){
-                unique = false;
-            }
-            if(unique){
+            if(sortedV[i] != lastN){
                 sortedDistV[indexDist] = sortedV[i];
                 indexDist++;
             }
+            lastN = sortedV[i];
         }
 
         //Dados
