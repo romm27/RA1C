@@ -8,7 +8,6 @@ int main() {
 
     char line[MAX];
     int integerQuantity = 0;
-    int i = 0;
 
     FILE *fileRead = fopen("dados.txt", "r");
     FILE *statistics = fopen("estatisticas.txt", "w");
@@ -91,11 +90,33 @@ int main() {
             count++;
         }
 
+        int temp = 0;
+        
+        //Sorted
+        int sortedV[index];
+        memcpy(sortedV, numbers, sizeof(numbers));
+
+        for(int i = 0; i < index; i++){
+            for(int j = 0; j < index; j++){
+                if(sortedV[i] < sortedV[j]){
+                    temp = sortedV[i];
+                    sortedV[i] = sortedV[j];
+                    sortedV[j] = temp;
+                }
+            }
+        }
+
+        //Dados
         fprintf(statistics, "%s %d\n", "Quantidade de números positivos: ", positives);
         fprintf(statistics, "%s %d\n", "Quantidade de números negativos: ", negatives);
         fprintf(statistics, "%s %d\n", "Quantidade de números zero: ", zeros);
         fprintf(statistics, "%s %d\n", "Quantidade de números pares: ", evens);
         fprintf(statistics, "%s %d\n", "Quantidade de números ímpares: ", odds);
+
+        //Ordenados
+        for(int i = 0; i < index; i++){
+            fprintf(sorted, "%d ", sortedV[i]);
+        }
 
         // if (index > MAX) {
         //     //programa deve ser interrompido e nenhum resultado deve ser produzido
@@ -108,6 +129,8 @@ int main() {
     fclose(unique);
     fclose(sorted);
     fclose(uniqueSorted);
+
+    printf("%s", "Program successfully run!");
 
     return 0;
 }
