@@ -136,9 +136,7 @@ int main() {
         //printf("count: %d %d \n", index, indexSortedDist);
         for(int i = 0; i < index; i++){
             for(int j = 0; j < indexSortedDist; j++){
-                printf("number: %d sortedDistV: %d\n", numbers[i], sortedDistV[j]);
                 if(numbers[i] == sortedDistV[j] && checkList[j] == false){
-                    printf("%s", "^^ BINGO! ^^\n");
                     distV[indexDist] = numbers[i];
                     checkList[j] = true;
                     indexDist++;
@@ -165,13 +163,9 @@ int main() {
 
         //Distintos
         for(int i = 0; i < indexDist; i++){
-            //printf("%d", indexDist);
             fprintf(unique, "%d ", distV[i]);
         }
-
-        // if (index > MAX) {
-        //     //programa deve ser interrompido e nenhum resultado deve ser produzido
-        //     return 1;
+   return 1;
 
     }
 
