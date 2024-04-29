@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 #define MAX 1000
 
@@ -92,6 +93,7 @@ int main() {
 
         int temp = 0;
         
+
         //Sorted
         int sortedV[index];
         memcpy(sortedV, numbers, sizeof(numbers));
@@ -106,6 +108,22 @@ int main() {
             }
         }
 
+        //Sorted Dist
+        int sortedDistV[index];
+        sortedDistV[0] = sortedV[0];
+        int lastN = sortedV[0];
+        int indexDist = 0;
+        for(int i = 1; i < index; i++){
+            bool unique = true;
+            while(sortedV[i] == lastN){
+                unique = false;
+            }
+            if(unique){
+                sortedDistV[indexDist] = sortedV[i];
+                indexDist++;
+            }
+        }
+
         //Dados
         fprintf(statistics, "%s %d\n", "Quantidade de números positivos: ", positives);
         fprintf(statistics, "%s %d\n", "Quantidade de números negativos: ", negatives);
@@ -116,6 +134,11 @@ int main() {
         //Ordenados
         for(int i = 0; i < index; i++){
             fprintf(sorted, "%d ", sortedV[i]);
+        }
+
+        //Distinto Ordenados
+        for(int i = 0; i < indexDist; i++){
+            fprintf(uniqueSorted, "%d ", sortedDistV[i]);
         }
 
         // if (index > MAX) {
