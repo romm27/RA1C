@@ -4,6 +4,7 @@
 #include <stdbool.h>
 
 #define MAX 1000
+#define INPUT_SIZE index
 
 int main() {
 
@@ -93,10 +94,12 @@ int main() {
 
         int temp = 0;
         
-
         //Sorted
         int sortedV[index];
-        memcpy(sortedV, numbers, sizeof(numbers));
+
+        for(int i = 0; i < index; i++){
+            sortedV[i] = numbers[i];
+        }
 
         for(int i = 0; i < index; i++){
             for(int j = 0; j < index; j++){
@@ -112,13 +115,35 @@ int main() {
         int sortedDistV[index];
         sortedDistV[0] = sortedV[0];
         int lastN = sortedV[0];
-        int indexDist = 1;
+        int indexSortedDist = 1;
         for(int i = 1; i < index; i++){
             if(sortedV[i] != lastN){
-                sortedDistV[indexDist] = sortedV[i];
-                indexDist++;
+                sortedDistV[indexSortedDist] = sortedV[i];
+                indexSortedDist++;
             }
             lastN = sortedV[i];
+        }
+
+        //Dist
+        int distV[indexSortedDist];
+        bool checkList[indexSortedDist];
+        int indexDist = 0;
+
+        for(int i = 0; i < indexSortedDist; i++){
+            checkList[i] = false;
+        }
+
+        //printf("count: %d %d \n", index, indexSortedDist);
+        for(int i = 0; i < index; i++){
+            for(int j = 0; j < indexSortedDist; j++){
+                printf("number: %d sortedDistV: %d\n", numbers[i], sortedDistV[j]);
+                if(numbers[i] == sortedDistV[j] && checkList[j] == false){
+                    printf("%s", "^^ BINGO! ^^\n");
+                    distV[indexDist] = numbers[i];
+                    checkList[j] = true;
+                    indexDist++;
+                }
+            }
         }
 
         //Dados
@@ -134,8 +159,14 @@ int main() {
         }
 
         //Distinto Ordenados
-        for(int i = 0; i < indexDist; i++){
+        for(int i = 0; i < indexSortedDist; i++){
             fprintf(uniqueSorted, "%d ", sortedDistV[i]);
+        }
+
+        //Distintos
+        for(int i = 0; i < indexDist; i++){
+            //printf("%d", indexDist);
+            fprintf(unique, "%d ", distV[i]);
         }
 
         // if (index > MAX) {
