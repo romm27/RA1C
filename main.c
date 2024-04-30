@@ -175,7 +175,7 @@ int main() {
     fclose(sorted);
     fclose(uniqueSorted);
 
-    printf("%s", "Program successfully run!");
+    printf("%s", "Program has successfully ran!");
 
     return 0;
 }
